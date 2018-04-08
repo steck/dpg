@@ -26,14 +26,13 @@ export class HomeContainerComponent {
       <div class="row" *ngFor="let block of blockState?.blocks">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Block of type {{ block.type }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <app-tile [block]="block"></app-tile>
             
-            <a [routerLink]="getEditLink(block)" class="card-link">Edit</a>
-            <a style="cursor: pointer" 
-               class="card-link"
-              (click)="onRemove(block)">Remove</a>
+            <a class="card-link"
+               [routerLink]="getEditLink(block)">Edit</a>
+            <a class="card-link"
+               [routerLink]=""
+               (click)="onRemove(block)">Remove</a>
           </div>
         </div>
       </div>

@@ -8,6 +8,11 @@ export interface Block {
   id: string;
 }
 
+export class BlockInfo {
+  constructor(readonly block: Block) {
+  }
+}
+
 export interface InfoBlock extends Block {
   type: BlockType.Info;
 
