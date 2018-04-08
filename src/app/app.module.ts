@@ -18,6 +18,7 @@ import {EditorComponent, EditorContainerComponent} from './components/editor/edi
 import {CommonInfoContainerComponent} from "./components/common-info/common-info.container.component";
 import {CommonInfoTileComponent} from './components/tiles/common-info.tile/common-info.tile.component';
 import { TileComponent } from './components/tiles/tile/tile.component';
+import {PromotionTileComponent} from "./components/tiles/promotion.tile/promotion.tile.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeContainerComponent},
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     EditorContainerComponent,
     EditorComponent,
     CommonInfoTileComponent,
-    TileComponent
+    PromotionTileComponent,
+    TileComponent,
   ],
   imports: [
     BrowserModule,

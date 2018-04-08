@@ -1,5 +1,6 @@
 export enum BlockType {
   Info = "info",
+  Promotion = "promotion",
   Temp = "temp",
 }
 
@@ -19,3 +20,4 @@ export interface InfoBlock extends Block {
   name: string;
   version: string;
 }
+
