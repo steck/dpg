@@ -21,10 +21,9 @@ export class HomeContainerComponent {
 @Component({
   selector: 'app-home',
   template: `
-
     <div class="container">
       <div class="row" *ngFor="let block of blockState?.blocks">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 100%;">
           <div class="card-body">
             <app-tile [block]="block"></app-tile>
             

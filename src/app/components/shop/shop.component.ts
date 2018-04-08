@@ -25,6 +25,11 @@ export class ShopContainerComponent {
           Create new Generic Info block
         </a>
       </div>
+      <div class="row">
+        <a routerLink="/create/promotions">
+          Create new Promotions block
+        </a>
+      </div>
     </div>
   `,
   styleUrls: ['./shop.component.scss']

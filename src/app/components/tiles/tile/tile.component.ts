@@ -5,10 +5,14 @@ import {
 } from '@angular/core';
 import {Block, BlockInfo, BlockType} from "../../../entities/block";
 import {CommonInfoTileComponent} from "../common-info.tile/common-info.tile.component";
+import {PromotionTileComponent} from "../promotion.tile/promotion.tile.component";
 
 @Component({
   selector: 'app-tile',
-  entryComponents: [CommonInfoTileComponent],
+  entryComponents: [
+    CommonInfoTileComponent,
+    PromotionTileComponent,
+  ],
   template: `
     <div #dynamicComponentContainer></div>
   `,
@@ -29,6 +33,7 @@ export class TileComponent implements OnInit {
 
   constructor(private resolver: ComponentFactoryResolver) {
     this.tilesMap.set(BlockType.Info, CommonInfoTileComponent);
+    this.tilesMap.set(BlockType.Promotion, PromotionTileComponent);
   }
 
   ngOnInit(): void {

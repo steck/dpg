@@ -1,6 +1,6 @@
 export enum BlockType {
   Info = "info",
-  Promotion = "promotion",
+  Promotion = "promotions",
   Temp = "temp",
 }
 

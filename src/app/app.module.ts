@@ -19,6 +19,9 @@ import {CommonInfoContainerComponent} from "./components/common-info/common-info
 import {CommonInfoTileComponent} from './components/tiles/common-info.tile/common-info.tile.component';
 import { TileComponent } from './components/tiles/tile/tile.component';
 import {PromotionTileComponent} from "./components/tiles/promotion.tile/promotion.tile.component";
+import { PromotionsComponent } from './components/promotions/promotions.component';
+import {PromotionsContainerComponent} from "./components/promotions/promotions.container.component";
+import {BlockType} from "./entities/block";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeContainerComponent},
@@ -27,14 +30,16 @@ const appRoutes: Routes = [
   {
     path: 'create', component: CreatorComponent,
     children: [
-      {path: 'info', component: CommonInfoContainerComponent},
+      {path: BlockType.Info, component: CommonInfoContainerComponent},
+      {path: BlockType.Promotion, component: PromotionsContainerComponent},
     ]
   },
 
   {
     path: 'edit/:id', component: EditorContainerComponent,
     children: [
-      {path: 'info', component: CommonInfoContainerComponent},
+      {path: BlockType.Info, component: CommonInfoContainerComponent},
+      {path: BlockType.Promotion, component: PromotionsContainerComponent},
     ]
   },
 
@@ -66,6 +71,9 @@ const appRoutes: Routes = [
     CommonInfoTileComponent,
     PromotionTileComponent,
     TileComponent,
+
+    PromotionsContainerComponent,
+    PromotionsComponent,
   ],
   imports: [
     BrowserModule,
