@@ -43,6 +43,6 @@ export class HomeComponent {
   }
 
   getEditLink(block: Block) {
-    return `/edit/${block.type}/${block.id}`;
+    return `/edit/${block.id}/${block.type}`;
   }
 }

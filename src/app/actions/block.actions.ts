@@ -3,6 +3,7 @@ import {Action} from "@ngrx/store";
 
 export enum BlockAction {
   Add = "[BlockAction] Add",
+  Amend = "[BlockAction] Amend",
   Remove = "[BlockAction] Remove",
   Reset = "[BlockAction] Reset",
 }
@@ -21,6 +22,13 @@ export class RemoveBlockAction implements Action {
   }
 }
 
+export class AmendBlockAction implements Action {
+  readonly type = BlockAction.Amend;
+
+  constructor(readonly id: string, readonly block: Partial<Block>) {
+  }
+}
+
 export class ResetBlockAction implements Action {
   readonly type = BlockAction.Reset;
 
@@ -28,4 +36,4 @@ export class ResetBlockAction implements Action {
   }
 }
 
-export type BlockActions = AddBlockAction | RemoveBlockAction | ResetBlockAction;
+export type BlockActions = AddBlockAction | RemoveBlockAction | ResetBlockAction | AmendBlockAction;

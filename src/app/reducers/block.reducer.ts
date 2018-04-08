@@ -21,7 +21,16 @@ export function blockReducer(state: BlockState = initialBlockState, action: Bloc
         ...state,
         blocks: state.blocks.filter(x => x.id !== action.id),
       };
+    case BlockAction.Amend:
+      return {
+        ...state,
+        blocks: state.blocks.map(block => block.id === action.id
+          ? {...block, ...action.block}
+          : block),
+      };
     case BlockAction.Reset:
       return initialBlockState;
   }
+
+  return state;
 }

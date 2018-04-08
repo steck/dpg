@@ -12,27 +12,26 @@ import {HomeComponent, HomeContainerComponent} from './components/home/home.comp
 import {RouterModule, Routes} from "@angular/router";
 import {ShopComponent, ShopContainerComponent} from './components/shop/shop.component';
 import {IdGeneratorService} from './services/id-generator.service';
-import { CommonInfoComponent } from './components/common-info/common-info.component';
+import {CommonInfoComponent} from './components/common-info/common-info.component';
 import { CreatorComponent } from './components/creator/creator.component';
-import { EditorComponent } from './components/editor/editor.component';
+import {EditorComponent, EditorContainerComponent} from './components/editor/editor.component';
+import {CommonInfoContainerComponent} from "./components/common-info/common-info.container.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeContainerComponent},
   {path: 'shop', component: ShopContainerComponent},
 
-
   {
     path: 'create', component: CreatorComponent,
     children: [
-      { path: 'info', component: CommonInfoComponent },
+      { path: 'info', component: CommonInfoContainerComponent },
     ]
   },
 
-
   {
-    path: 'edit', component: EditorComponent,
+    path: 'edit/:id', component: EditorContainerComponent,
     children: [
-      { path: 'info/:id', component: CommonInfoComponent },
+      { path: 'info', component: CommonInfoContainerComponent },
     ]
   },
 
@@ -53,17 +52,22 @@ const appRoutes: Routes = [
 
     ShopContainerComponent,
     ShopComponent,
+
+    CommonInfoContainerComponent,
     CommonInfoComponent,
+
     CreatorComponent,
+
+    EditorContainerComponent,
     EditorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {}),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
 
     // ngrx part
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, { }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
