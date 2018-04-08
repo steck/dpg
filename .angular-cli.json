@@ -55,10 +55,9 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
-  },
-  "inline": {
-    "style": false,
-    "template": true
+    "component": {
+      "inlineStyle": false,
+      "inlineTemplate": true
+    }
   }
 }

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {State} from "../../reducers/index";
 import {Store} from "@ngrx/store";
 import {BlockState} from "../../reducers/block.reducer";
+import {Block} from "../../entities/block";
 
 @Component({
   selector: 'app-home-container',
@@ -19,13 +20,16 @@ export class HomeContainerComponent {
 @Component({
   selector: 'app-home',
   template: `
-    <p>
-      home works!
-    </p>
 
     <div class="container">
-      <div class="row" *ngFor="let block of blockState.blocks">
+      <div class="row" *ngFor="let block of blockState?.blocks">
         {{ block.type }} !!!
+        <br/>
+        <a class="nav-link" [routerLink]="getEditLink(block)">Edit</a>
+      </div>
+      
+      <div class="row" *ngIf="!blockState?.blocks.length">
+        Nothing to display. Please, add some components
       </div>
     </div>
   `,
@@ -36,5 +40,9 @@ export class HomeComponent {
   blockState: BlockState;
 
   constructor() {
+  }
+
+  getEditLink(block: Block) {
+    return `/edit/${block.type}/${block.id}`;
   }
 }

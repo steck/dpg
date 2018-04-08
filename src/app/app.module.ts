@@ -11,10 +11,31 @@ import {reducers} from "./reducers";
 import {HomeComponent, HomeContainerComponent} from './components/home/home.component';
 import {RouterModule, Routes} from "@angular/router";
 import {ShopComponent, ShopContainerComponent} from './components/shop/shop.component';
+import {IdGeneratorService} from './services/id-generator.service';
+import { CommonInfoComponent } from './components/common-info/common-info.component';
+import { CreatorComponent } from './components/creator/creator.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeContainerComponent},
   {path: 'shop', component: ShopContainerComponent},
+
+
+  {
+    path: 'create', component: CreatorComponent,
+    children: [
+      { path: 'info', component: CommonInfoComponent },
+    ]
+  },
+
+
+  {
+    path: 'edit', component: EditorComponent,
+    children: [
+      { path: 'info/:id', component: CommonInfoComponent },
+    ]
+  },
+
   {
     path: '',
     redirectTo: '/home',
@@ -31,7 +52,10 @@ const appRoutes: Routes = [
     HomeComponent,
 
     ShopContainerComponent,
-    ShopComponent
+    ShopComponent,
+    CommonInfoComponent,
+    CreatorComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +70,12 @@ const appRoutes: Routes = [
       logOnly: environment.production // Restrict extension to log-only mode
     })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    IdGeneratorService,
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 }
