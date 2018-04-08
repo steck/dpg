@@ -13,9 +13,11 @@ import {RouterModule, Routes} from "@angular/router";
 import {ShopComponent, ShopContainerComponent} from './components/shop/shop.component';
 import {IdGeneratorService} from './services/id-generator.service';
 import {CommonInfoComponent} from './components/common-info/common-info.component';
-import { CreatorComponent } from './components/creator/creator.component';
+import {CreatorComponent} from './components/creator/creator.component';
 import {EditorComponent, EditorContainerComponent} from './components/editor/editor.component';
 import {CommonInfoContainerComponent} from "./components/common-info/common-info.container.component";
+import {CommonInfoTileComponent} from './components/tiles/common-info.tile/common-info.tile.component';
+import { TileComponent } from './components/tiles/tile/tile.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeContainerComponent},
@@ -24,14 +26,14 @@ const appRoutes: Routes = [
   {
     path: 'create', component: CreatorComponent,
     children: [
-      { path: 'info', component: CommonInfoContainerComponent },
+      {path: 'info', component: CommonInfoContainerComponent},
     ]
   },
 
   {
     path: 'edit/:id', component: EditorContainerComponent,
     children: [
-      { path: 'info', component: CommonInfoContainerComponent },
+      {path: 'info', component: CommonInfoContainerComponent},
     ]
   },
 
@@ -59,7 +61,9 @@ const appRoutes: Routes = [
     CreatorComponent,
 
     EditorContainerComponent,
-    EditorComponent
+    EditorComponent,
+    CommonInfoTileComponent,
+    TileComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {useHash: true}),
 
     // ngrx part
-    StoreModule.forRoot(reducers, { }),
+    StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
